@@ -8,10 +8,10 @@
        <h5>Calcul d'intérêts</h5>
        <form name="formulaire" method="post" action="resultat.php">
         <p>Prix de vente de votre maison :</p>
-        <input name="pv" type="number" size="30">
+        <input name="prixVente" type="number" size="30">
         <br>
         <p>Vos fonds propres :</p>
-        <input name="fp" type="number" size="30">
+        <input name="fondPropres" type="number" size="30">
         <br>
         <p>Taux 1er rang :</p>
         <input name="taux1" type="number" size="30" value="3.5">
