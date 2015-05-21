@@ -1,24 +1,53 @@
 <?php
-$nombre= 0;
-const NBR_MAX = '5';
-const NBR_MIN = '1';
-
-$nombre= rand (NBR_MIN, NBR_MAX);
+  // Exercice 1 chapitre 4
+  // Bastien Nicoud
+  // 18.05.2015 - CPNV Média
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html>
   <head>
-    <title>Exercice 05</title>
     <meta charset="utf-8">
+    <title>Ex 1 Chap 4</title>
+    <style>
+      * {
+        font-family: Arial;
+        font-size: 12pt;
+      }
+    </style>
   </head>
-    <body>
-    <p>Entrer votre adresse e-mail:</p>
-    <form name="form1" method="post" action="resultat.php" >
-        <input type="text" name="nbr"/>
-        <p>
-        <input type="submit" value="envoyer"/>
-        <br>
-   
-    </body>
-</html> 
- 
+  <body>
+    <?php
+      $go = filter_input(INPUT_POST,'go');
+      if ($go) {
+        $mail = filter_input(INPUT_POST,'mail',FILTER_SANITIZE_EMAIL);
+        if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+          echo "Votre adresse est valide.<br>";
+        } else {
+          die('Cettre adresse n\'est pas valide, <a href="formulaire.php">recomencez</a>');
+        }
+        $dbh = new mysqli('localhost', 'cpnv', 'cpnv1234', 'ch04');
+        if ($dbh->connect_errno) {
+          die("Problème de connexion({$dbh->connect_errno}))" . $dbh->connect_errno);
+        }
+        $request = "INSERT INTO liste_email (email, date_inscription) VALUES ('$mail', NOW())";
+        $result = $dbh->query($request);
+        if ($result) {
+          echo "Merci, votre e-mail a bien été enregistré";
+        }
+        $dbh->close();
+      } else {
+        ?>
+
+          <form name="formulaire" method="post" action="formulaire.php">
+            <input type="hidden" name="go" value="1">
+            <p>Votre Mail :</p>
+            <input name="mail" type="text" size="30">
+            <br>
+            <input type="submit" value="Envoyer"/>
+          </form>
+
+        <?php
+      }
+    ?>
+  </body>
+</html>
