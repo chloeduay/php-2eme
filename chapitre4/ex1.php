@@ -1,19 +1,8 @@
-<?php
-  // Exercice 1 chapitre 4
-  // Bastien Nicoud
-  // 18.05.2015 - CPNV Média
-?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Ex 1 Chap 4</title>
-    <style>
-      * {
-        font-family: Arial;
-        font-size: 12pt;
-      }
-    </style>
+    <title>Ex1</title>
   </head>
   <body>
     <?php
@@ -38,7 +27,7 @@
       } else {
         ?>
 
-          <form name="formulaire" method="post" action="formulaire.php">
+          <form name="formulaire" method="post" action="ex1.php">
             <input type="hidden" name="go" value="1">
             <p>Votre Mail :</p>
             <input name="mail" type="text" size="30">

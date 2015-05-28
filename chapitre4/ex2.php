@@ -1,8 +1,3 @@
-<?php
-  // Exercice 1 chapitre 4
-  // Bastien Nicoud
-  // 18.05.2015 - CPNV Média
-?>
 <!DOCTYPE html>
 <html>
   <head>
