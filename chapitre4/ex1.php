@@ -32,6 +32,7 @@
             <p>Votre Mail :</p>
             <input name="mail" type="text" size="30">
             <br>
+            <br>
             <input type="submit" value="Envoyer"/>
           </form>
 
