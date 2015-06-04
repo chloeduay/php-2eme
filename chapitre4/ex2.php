@@ -8,20 +8,37 @@
         font-family: Arial;
         font-size: 12pt;
       }
+      table {
+          border-collapse: collapse;
+      }
+      
+      table, td, tr, th {
+          border: 1px solid black;
+      }
     </style>
   </head>
   <body>
+      <h1>Voici la liste des emails</h1>
     <?php
-        $dbh = new mysqli('localhost', 'cpnv', 'cpnv1234', 'ch04');
-        if ($dbh->connect_errno) {
-          die("Problème de connexion({$dbh->connect_errno}))" . $dbh->connect_errno);
+        $new = new mysqli('localhost', 'cpnv', 'cpnv1234', 'ch04');
+        if ($new->connect_errno) {
+          die("Problème de connexion({$new->connect_errno}))" . $new->connect_errno);
         }
-        $request = "SELECT email, date_inscription FROM liste_email;";
-        $result = $dbh->query($request);
+        $request = "SELECT id, email, date_inscription FROM liste_email";
+        $result = $new->query($request);
+        
+        echo "<table>";
+        echo  "<tr>";
+        echo    "<th>Id</th><th>Email</th><th>Date</th><th>Options</th>";
+        echo  "</tr>";
         foreach ($result as $email) {
-          echo "{$email['email']} {$email['date_inscription']}<br>";
+          echo "<tr>";
+          echo "<td>{$id['id']}</td><td>{$email['email']}</td><td>{$email['date_inscription']}</td><td>{$Options['Options']}</td>";
+          echo "</tr>";
         }
-        $dbh->close();
+        echo "</table>";
+        $new->close();
     ?>
   </body>
 </html> 
+
